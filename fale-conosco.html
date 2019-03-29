@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8"/>
+		<title>Tudo sobre Google Glass</title>
+        <link rel="stylesheet" type="text/css" href="_css/estilo.css"/>
+        <link rel="stylesheet" type="text/css" href="_css/form.css"/>
+        <script type="text/javascript" src="_javascript/funcoes.js"></script>
+        <script>
+            function calc_total(){
+                var qtd = parseInt(document.getElementById('quant').value);
+                total = qtd * 1500;
+                document.getElementById('tot').value = total;
+            }
+        </script>
+	</head>
+		
+	<body>
+		<div id="interface">
+
+			<header id="cabecalho">
+				<hgroup>
+					<h1>Google Glass</h1>
+					<h2>A revolução do Google está chegando</h2>
+				</hgroup>
+
+				<img id="icone" src="_imagens/glass-oculos-preto-peq.png" />
+
+				<nav id="menu">
+					<h1>Menu Principal</h1>
+					<ul type="disc">
+						<li onmouseover="mudaFoto('_imagens/home.png')" onmouseout="mudaFoto('_imagens/contato.png')"><a href="index.html">Home</a></li>
+						<li onmouseover="mudaFoto('_imagens/especificacoes.png')" onmouseout="mudaFoto('_imagens/contato.png')"><a href="specs.html">Especificacao</a></li>
+						<li onmouseover="mudaFoto('_imagens/fotos.png')" onmouseout="mudaFoto('_imagens/contato.png')"><a href="fotos.html">Fotos</a></li>
+						<li onmouseover="mudaFoto('_imagens/multimidia.png')" onmouseout="mudaFoto('_imagens/contato.png')"><a href="multimidia.html">Multimidia</a></li>
+						<li onmouseover="mudaFoto('_imagens/contato.png')" onmouseout="mudaFoto('_imagens/contato.png')"><a href="fale-conosco.html">Fale conosco</a></li>
+					</ul>
+				</nav>
+            </header>
+
+            <section id="corpo-full">
+				<article id="noticia-principal">
+					<header id="cabecalho-artigo">
+						<hgroup>
+							<h3>Fale Conosco > Contato</h3>
+							<h1>Formulário de Contato</h1>
+							<h2>por Carlos Alexandre</h2>
+                            <h3 class="direita">Atualizado em 18/setembro/2018</h3>
+                        </hgroup>
+                    </header>
+
+                    <form action="" method="post" id="contato" action="contato.php" oninput="calc_total();" >
+                        <fieldset id="usuario">  
+                            <legend>Identificação do Usuário</legend>
+                                
+                                <p><label for="nome">Nome:</label><input type="text" name="nome" id="nome" size="20" maxlength="30" placeholder="Nome completo"></p>
+                                <p><label for="senha">Senha:</label><input type="password" name="senha" id="senha" size="8" maxlength="8" placeholder="8 dígitos" > </p>
+                                <p><label for="email">E-mail:</label><input type="email" name="email" id="email" size="20" maxlength="40" /> </p>
+                               
+                                <fieldset id="sexo">
+                                    <legend>Sexo:</legend>
+                                        <input type="radio" name="sexo" id="sexoM" checked><label for="sexoM"> Masculino</label><br />
+                                        <input type="radio" name="sexo" id="sexoF"><label for="sexoF"> Feminino</label>
+                                </fieldset> 
+                                 <p><label for="nasc">Data de Nascimento:</label> <input type="date" name="nasc" id="nasc"> </p>                   
+                        </fieldset> 
+                        <fieldset id="endereco">
+                            <legend>Endereço do Usuário</legend>
+                                <p><label for="rua">Logradouro:</label><input type="text" name="rua" id="rua" size="20" maxlength="80" placeholder="Rua, Trav, Av, ..." ></p>
+                                <p><label for="numero">Número:</label><input type="number" name="numero" id="numero" min="0" max="9999"></p>
+                                <p><label for="estado">Estado:</label>
+                                <select name="estado" id="estado">
+                                    <optgroup label="Região Sudeste">
+                                        <option value="RJ">Rio de Janeiro</option>
+                                        <option selected value="SP">São Paulo</option>
+                                        <option value="MG">Minas Gerais</option>
+                                    </optgroup>
+
+                                    <optgroup label="Região Sul">
+                                        <option value="PR">Paraná</option>
+                                        <option value="SC">Santa Catarina</option>
+                                        <option value="RS">Rio Grande do Sul</option>
+                                    </optgroup>
+                                </select></p>
+
+                                <p><label for="cidade">Cidade:</label> 
+                                <input type="text" name="cidade" id="cidade" size="20" maxlength="40" placeholder="Cidade" list="cidades"></p>
+                                <datalist id="cidades">
+                                    <option value="Rio de Janeiiro"></option>
+                                    <option value="Nova Iguaçu"></option>
+                                    <option value="Niterói"></option>
+                                    <option value="Belford Roxo"></option>
+                                </datalist>
+                                
+                        </fieldset>
+
+                        <fieldset id="mensagem">
+                            <legend>Mensagem do Usuário</legend>
+                                <p><label for="urgencia">Grau de Urgência:</label>
+                                   Mín <input type="range" name="urgencia" id="urgencia" min="0" max="10" step="2" /> Máx 
+                                </p>
+                                <p><label for="msg">Mensagem:</label>
+                                <textarea name="msg" id="msg" cols="30" rows="10" placeholder="Deixe aqui sua mensagem"></textarea></p>
+                        </fieldset>
+
+                        <fieldset id="pedido">
+                            <legend>Quero um Google Glass</legend>
+                            <p class="texto-ped"><input type="checkbox" name="ped" id="ped" checked><label for="ped">Gostaria de adquirir um Google Glass quando disponível</label></p>
+                            <p><label for="cor">Cor:</label><input type="color" name="cor" id="cor"></p>
+                            <p><label for="quant">Quantidade:</label><input type="number" name="quant" id="quant" min="0" max="5"> </p>
+                            <p><label for="tot">Preço Total: R$</label><input type="text" name="tot" id="tot" placeholder="Total apagar" readonly></p> 
+
+                        </fieldset>
+                            <input type="image" name="enviar" src="_imagens/botao-enviar.png" alt="Botão enviar">
+                    </form>
+                </article>
+            </section>
+            <footer id="rodape">
+                <p>Copyright &copy; 2013 - by Carlos Alexandre &clubs;<br/>
+                <a href="http://facebook.com" target="blank">Facebook</a> | 
+                <a href="http://twitter.com" target="blank">Twitter</a></p>
+            </footer>
+        </div>
+    </body>
+</html>
